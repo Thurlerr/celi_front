@@ -1,7 +1,9 @@
+//busca dados de atividades a partir de arquivo JSON local
 function getActivities() {
   return fetch("./Json/atividade.json").then((r) => r.json());
 }
 
+//renderiza atividades na página
 function renderActivities(activities) {
   const target = document.querySelector(".lista-atividades");
   target.innerHTML = "";
@@ -12,6 +14,7 @@ function renderActivities(activities) {
   });
 }
 
+//cria elementos HTML para cada atividade
 function createActivityElement(activity) {
   const activityElement = document.createElement("div");
   activityElement.classList.add("atividade", "mb");
@@ -28,6 +31,7 @@ function createActivityElement(activity) {
   return activityElement;
 }
 
+//inicializa o carregamento e renderização das atividades
 async function init() {
   const data = await getActivities();
   renderActivities(data);
